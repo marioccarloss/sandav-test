@@ -1,5 +1,4 @@
 import { Outlet } from '@tanstack/react-router';
-import React from 'react';
 import Layout from './components/layout/layout';
 
 function App() {

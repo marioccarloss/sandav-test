@@ -10,19 +10,18 @@ const initializeMonitoring = () => {
   //   replaysSessionSampleRate: 0.1,
   //   replaysOnErrorSampleRate: 1.0,
   // });
-  console.log("Servicio de monitorización inicializado (simulado).");
+  console.log('Servicio de monitorización inicializado (simulado).');
 };
 
 const logError = (error, errorInfo) => {
   // Aquí es donde enviarías el error al servicio real.
   // Sentry.captureException(error, { extra: errorInfo });
 
-  console.group("Error Registrado en Servicio de Monitorización (Simulado)");
-  console.error("Error:", error);
-  console.error("Información Adicional:", errorInfo);
+  console.group('Error Registrado en Servicio de Monitorización (Simulado)');
+  console.error('Error:', error);
+  console.error('Información Adicional:', errorInfo);
   console.groupEnd();
 };
-
 
 export const monitoringService = {
   initialize: initializeMonitoring,

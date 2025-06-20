@@ -1,4 +1,3 @@
-import React from 'react';
 import Header from './header';
 import { Content, MainLayout } from './layout.styled';
 
@@ -6,9 +5,7 @@ const Layout = ({ children }) => {
   return (
     <MainLayout>
       <Header />
-      <Content>
-        {children}
-      </Content>
+      <Content>{children}</Content>
     </MainLayout>
   );
 };

@@ -39,7 +39,7 @@ export const Checkmark = styled.div`
   justify-content: center;
   font-size: 1rem;
   font-weight: bold;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   transform: scale(${({ $isSelected }) => ($isSelected ? 1 : 0)});
   transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   z-index: 2;

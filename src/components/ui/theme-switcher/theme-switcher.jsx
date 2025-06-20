@@ -8,7 +8,10 @@ export const ThemeSwitcher = () => {
   const isLight = theme === 'light';
 
   return (
-    <SwitcherButton onClick={toggleTheme} title={`Switch to ${isLight ? 'Dark' : 'Light'} Mode`}>
+    <SwitcherButton
+      onClick={toggleTheme}
+      title={`Switch to ${isLight ? 'Dark' : 'Light'} Mode`}
+    >
       {isLight ? <MoonIcon /> : <SunIcon />}
     </SwitcherButton>
   );

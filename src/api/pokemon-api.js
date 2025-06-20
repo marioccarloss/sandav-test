@@ -4,13 +4,15 @@ const LIMIT = 20;
 
 export const getPokemons = async ({ pageParam = 0 }) => {
   const offset = pageParam * LIMIT;
-  const response = await fetch(`${POKEAPI_URL}/pokemon?limit=${LIMIT}&offset=${offset}`);
+  const response = await fetch(
+    `${POKEAPI_URL}/pokemon?limit=${LIMIT}&offset=${offset}`
+  );
   if (!response.ok) {
     throw new Error('Failed to fetch pokemons');
   }
   const data = await response.json();
 
-  const promises = data.results.map(async (pokemon) => {
+  const promises = data.results.map(async pokemon => {
     const res = await fetch(pokemon.url);
     return res.json();
   });
@@ -23,7 +25,7 @@ export const getPokemons = async ({ pageParam = 0 }) => {
   };
 };
 
-export const getPokemonById = async (id) => {
+export const getPokemonById = async id => {
   const response = await fetch(`${POKEAPI_URL}/pokemon/${id}`);
   if (!response.ok) {
     throw new Error('Failed to fetch pokemon');
@@ -31,7 +33,7 @@ export const getPokemonById = async (id) => {
   return response.json();
 };
 
-export const searchPokemon = async (name) => {
+export const searchPokemon = async name => {
   if (!name) return [];
   const response = await fetch(`${POKEAPI_URL}/pokemon/${name.toLowerCase()}`);
   if (!response.ok) {

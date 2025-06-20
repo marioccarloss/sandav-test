@@ -1,4 +1,8 @@
-import { createRootRoute, createRoute, createRouter } from '@tanstack/react-router';
+import {
+  createRootRoute,
+  createRoute,
+  createRouter,
+} from '@tanstack/react-router';
 import App from '../App';
 import BattleResultsPage from '../features/battle-simulation/routes/battle-results-page';
 import BattleSelectorPage from '../features/battle-simulation/routes/battle-selector-page';
@@ -23,30 +27,38 @@ const newTeamRoute = createRoute({
 });
 
 export const editTeamRoute = createRoute({
-    getParentRoute: () => rootRoute,
-    path: '/team/$teamId/edit',
-    component: EditTeamPage,
+  getParentRoute: () => rootRoute,
+  path: '/team/$teamId/edit',
+  component: EditTeamPage,
 });
 
 const battleRoute = createRoute({
-    getParentRoute: () => rootRoute,
-    path: '/battle',
+  getParentRoute: () => rootRoute,
+  path: '/battle',
 });
 
 const battleIndexRoute = createRoute({
-    getParentRoute: () => battleRoute,
-    path: '/',
-    component: BattleSelectorPage,
+  getParentRoute: () => battleRoute,
+  path: '/',
+  component: BattleSelectorPage,
 });
 
 const battleResultsRoute = createRoute({
-    getParentRoute: () => battleRoute,
-    path: 'results',
-    component: BattleResultsPage,
+  getParentRoute: () => battleRoute,
+  path: 'results',
+  component: BattleResultsPage,
 });
 
-const battleRouteTree = battleRoute.addChildren([battleIndexRoute, battleResultsRoute]);
+const battleRouteTree = battleRoute.addChildren([
+  battleIndexRoute,
+  battleResultsRoute,
+]);
 
-const routeTree = rootRoute.addChildren([indexRoute, newTeamRoute, editTeamRoute, battleRouteTree]);
+const routeTree = rootRoute.addChildren([
+  indexRoute,
+  newTeamRoute,
+  editTeamRoute,
+  battleRouteTree,
+]);
 
 export const router = createRouter({ routeTree });

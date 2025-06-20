@@ -1,13 +1,20 @@
-import React from 'react';
 import { useTheme } from 'styled-components';
-import { LogContainer, MatchupContainer, PokemonColumn, RoundTitle, RoundWrapper } from './round-detail.styled';
+import {
+  LogContainer,
+  MatchupContainer,
+  PokemonColumn,
+  RoundTitle,
+  RoundWrapper,
+} from './round-detail.styled';
 
 const RoundDetail = ({ round }) => {
   const theme = useTheme();
   const { pokemon1, pokemon2, winner, log } = round;
 
   return (
-    <RoundWrapper $winnerColor={winner.id === pokemon1.id ? theme.primary : theme.secondary}>
+    <RoundWrapper
+      $winnerColor={winner.id === pokemon1.id ? theme.primary : theme.secondary}
+    >
       <RoundTitle>Ronda {round.round}</RoundTitle>
       <MatchupContainer>
         <PokemonColumn $isWinner={winner.id === pokemon1.id}>
@@ -25,7 +32,9 @@ const RoundDetail = ({ round }) => {
       <LogContainer>
         <strong>Registro de combate:</strong>
         <ul>
-          {log.map((entry, index) => <li key={index}>{entry}</li>)}
+          {log.map((entry, index) => (
+            <li key={index}>{entry}</li>
+          ))}
         </ul>
       </LogContainer>
     </RoundWrapper>

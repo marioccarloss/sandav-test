@@ -1,5 +1,9 @@
-import React from 'react';
-import { CardWrapper, Checkmark, EmptySlot, PokemonGrid } from './team-selection-card.styled';
+import {
+  CardWrapper,
+  Checkmark,
+  EmptySlot,
+  PokemonGrid,
+} from './team-selection-card.styled';
 
 const TeamSelectionCard = ({ title, team, onSelect, isSelected }) => {
   return (
@@ -9,7 +13,11 @@ const TeamSelectionCard = ({ title, team, onSelect, isSelected }) => {
       {team ? (
         <PokemonGrid>
           {team.pokemons.map(pokemon => (
-            <img key={pokemon.uniqueId || pokemon.id} src={pokemon.sprites.front_default} alt={pokemon.name} />
+            <img
+              key={pokemon.uniqueId || pokemon.id}
+              src={pokemon.sprites.front_default}
+              alt={pokemon.name}
+            />
           ))}
         </PokemonGrid>
       ) : (

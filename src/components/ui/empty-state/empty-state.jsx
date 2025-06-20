@@ -1,6 +1,9 @@
-import React from 'react';
 import SearchIcon from '../icons/search-icon';
-import { EmptyStateIcon, EmptyStateMessage, EmptyStateWrapper } from './empty-state.styled';
+import {
+  EmptyStateIcon,
+  EmptyStateMessage,
+  EmptyStateWrapper,
+} from './empty-state.styled';
 
 const EmptyState = ({ message }) => {
   return (

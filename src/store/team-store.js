@@ -10,10 +10,13 @@ export const useTeamStore = create(
         name: '',
         pokemons: [],
       },
-      addPokemonToDraft: (pokemon) => {
+      addPokemonToDraft: pokemon => {
         if (get().draft.pokemons.length < 6) {
-          const uniquePokemon = { ...pokemon, uniqueId: `${pokemon.id}-${Date.now()}` };
-          set((state) => ({
+          const uniquePokemon = {
+            ...pokemon,
+            uniqueId: `${pokemon.id}-${Date.now()}`,
+          };
+          set(state => ({
             draft: {
               ...state.draft,
               pokemons: [...state.draft.pokemons, uniquePokemon],
@@ -21,49 +24,55 @@ export const useTeamStore = create(
           }));
         }
       },
-      removePokemonFromDraft: (uniqueId) =>
-        set((state) => ({
+      removePokemonFromDraft: uniqueId =>
+        set(state => ({
           draft: {
             ...state.draft,
-            pokemons: state.draft.pokemons.filter((p) => p.uniqueId !== uniqueId),
+            pokemons: state.draft.pokemons.filter(p => p.uniqueId !== uniqueId),
           },
         })),
-      setDraftName: (name) =>
-        set((state) => {
+      setDraftName: name =>
+        set(state => {
           const newDraft = { ...state.draft, name };
           return { ...state, draft: newDraft };
         }),
       saveDraft: () =>
-        set((state) => ({
+        set(state => ({
           ...state,
           teams: [...state.teams, { ...state.draft, id: Date.now() }],
           draft: { id: null, name: '', pokemons: [] },
         })),
-      discardDraft: () => set((state) => ({ ...state, draft: { id: null, name: '', pokemons: [] } })),
-      reorderDraft: (pokemons) =>
-        set((state) => ({
+      discardDraft: () =>
+        set(state => ({
+          ...state,
+          draft: { id: null, name: '', pokemons: [] },
+        })),
+      reorderDraft: pokemons =>
+        set(state => ({
           draft: {
             ...state.draft,
             pokemons: pokemons,
           },
         })),
-      deleteTeam: (teamId) =>
-        set((state) => ({
+      deleteTeam: teamId =>
+        set(state => ({
           ...state,
-          teams: state.teams.filter((team) => team.id !== teamId),
+          teams: state.teams.filter(team => team.id !== teamId),
         })),
-      loadDraft: (teamId) =>
-        set((state) => {
-          const teamToLoad = state.teams.find((team) => team.id === teamId);
+      loadDraft: teamId =>
+        set(state => {
+          const teamToLoad = state.teams.find(team => team.id === teamId);
           return {
             ...state,
             draft: teamToLoad || { id: null, name: '', pokemons: [] },
           };
         }),
-      updateTeam: (updatedTeam) =>
-        set((state) => ({
+      updateTeam: updatedTeam =>
+        set(state => ({
           ...state,
-          teams: state.teams.map((team) => (team.id === updatedTeam.id ? updatedTeam : team)),
+          teams: state.teams.map(team =>
+            team.id === updatedTeam.id ? updatedTeam : team
+          ),
           draft: { id: null, name: '', pokemons: [] },
         })),
     }),

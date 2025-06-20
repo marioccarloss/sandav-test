@@ -5,7 +5,8 @@ export const RoundWrapper = styled.div`
   padding: 1.5rem;
   border-radius: 20px;
   margin-bottom: 1.5rem;
-  border-left: 5px solid ${({ theme, $winnerColor }) => $winnerColor || theme.primary};
+  border-left: 5px solid
+    ${({ theme, $winnerColor }) => $winnerColor || theme.primary};
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 `;
 

@@ -6,7 +6,7 @@ export const HeaderWrapper = styled.div`
   border-radius: 20px;
   text-align: center;
   margin-bottom: 2rem;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 `;
 
 export const WinnerTitle = styled.h1`
@@ -14,7 +14,11 @@ export const WinnerTitle = styled.h1`
   font-weight: bold;
   margin: 0;
   text-transform: uppercase;
-  background: linear-gradient(45deg, ${({ theme }) => theme.primary}, ${({ theme }) => theme.secondary});
+  background: linear-gradient(
+    45deg,
+    ${({ theme }) => theme.primary},
+    ${({ theme }) => theme.secondary}
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -29,24 +33,26 @@ export const Score = styled.p`
 `;
 
 export const TeamsContainer = styled.div`
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin-top: 2rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 2rem;
 `;
 
 export const TeamResult = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-    h3 {
-        margin-bottom: 1rem;
-    }
+  h3 {
+    margin-bottom: 1rem;
+  }
 
-    ${({ $isWinner }) => $isWinner && css`
-        h3 {
-            color: ${({ theme }) => theme.secondary};
-        }
+  ${({ $isWinner }) =>
+    $isWinner &&
+    css`
+      h3 {
+        color: ${({ theme }) => theme.secondary};
+      }
     `}
 `;

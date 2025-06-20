@@ -1,5 +1,5 @@
 import { Link } from '@tanstack/react-router';
-import React from 'react';
+
 import { ThemeSwitcher } from '../ui/theme-switcher/theme-switcher';
 import { AppTitle, HeaderContainer } from './header.styled';
 

@@ -1,5 +1,6 @@
 import { monitoringService } from '@/services/monitoring-service';
 import React from 'react';
+
 import ErrorFallback from './error-fallback';
 
 class ErrorBoundary extends React.Component {

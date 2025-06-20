@@ -2,7 +2,7 @@ import Button from '@/components/ui/button/button';
 import Modal from '@/components/ui/modal/modal';
 import { useTeamStore } from '@/store/team-store';
 import { Link } from '@tanstack/react-router';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { TeamActions, TeamCard, TeamListWrapper } from './team-list.styled';
 
 const TeamList = () => {
@@ -36,14 +36,21 @@ const TeamList = () => {
             <h3>{team.name}</h3>
             <div>
               {team.pokemons.map(pokemon => (
-                <img key={pokemon.id} src={pokemon.sprites.front_default} alt={pokemon.name} />
+                <img
+                  key={pokemon.id}
+                  src={pokemon.sprites.front_default}
+                  alt={pokemon.name}
+                />
               ))}
             </div>
             <TeamActions>
               <Link to="/team/$teamId/edit" params={{ teamId: team.id }}>
                 <Button>Editar</Button>
               </Link>
-              <Button $variant="danger" onClick={() => handleDeleteClick(team.id, team.name)}>
+              <Button
+                $variant="danger"
+                onClick={() => handleDeleteClick(team.id, team.name)}
+              >
                 Eliminar
               </Button>
             </TeamActions>
@@ -56,7 +63,11 @@ const TeamList = () => {
         onConfirm={handleConfirmDelete}
         title="Confirmar eliminación"
       >
-        <p>¿Estás seguro de que quieres eliminar el equipo "{teamToDelete?.name}"?</p>
+        <p>
+          ¿Estás seguro de que quieres eliminar el equipo &quot;
+          {teamToDelete?.name}
+          &quot;?
+        </p>
       </Modal>
     </>
   );

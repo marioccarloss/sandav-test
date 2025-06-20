@@ -4,11 +4,16 @@ import Input from '@/components/ui/input/input';
 import { Spinner } from '@/components/ui/spinner/spinner';
 import { useDebounce } from '@/hooks/use-debounce';
 import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
-import React, { useEffect, useMemo, useRef } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import PokemonCard from '../pokemon-card/pokemon-card';
 import { PokemonGrid, PokemonSelectorWrapper } from './pokemon-selector.styled';
 
-const PokemonSelector = ({ onSelect, selectedPokemons, searchTerm, setSearchTerm }) => {
+const PokemonSelector = ({
+  onSelect,
+  selectedPokemons,
+  searchTerm,
+  setSearchTerm,
+}) => {
   const observerRef = useRef(null);
   const gridRef = useRef(null);
 
@@ -48,7 +53,7 @@ const PokemonSelector = ({ onSelect, selectedPokemons, searchTerm, setSearchTerm
     if (!gridRef.current || debouncedSearchTerm) return;
 
     const observer = new IntersectionObserver(
-      (entries) => {
+      entries => {
         if (entries[0].isIntersecting && hasNextPage && !isFetchingNextPage) {
           fetchNextPage();
         }
@@ -60,24 +65,37 @@ const PokemonSelector = ({ onSelect, selectedPokemons, searchTerm, setSearchTerm
       }
     );
 
-    if (observerRef.current) {
-      observer.observe(observerRef.current);
+    const currentObserverRef = observerRef.current;
+    if (currentObserverRef) {
+      observer.observe(currentObserverRef);
     }
 
     return () => {
-      if (observerRef.current) {
-        observer.unobserve(observerRef.current);
+      if (currentObserverRef) {
+        observer.unobserve(currentObserverRef);
       }
     };
-  }, [gridRef, hasNextPage, isFetchingNextPage, fetchNextPage, debouncedSearchTerm]);
+  }, [
+    gridRef,
+    hasNextPage,
+    isFetchingNextPage,
+    fetchNextPage,
+    debouncedSearchTerm,
+  ]);
 
-  const allPokemons = useMemo(() => infiniteData?.pages.flatMap(page => page.results) || [], [infiniteData]);
+  const allPokemons = useMemo(
+    () => infiniteData?.pages.flatMap(page => page.results) || [],
+    [infiniteData]
+  );
 
   const pokemons = debouncedSearchTerm ? searchData : allPokemons;
 
   const isLoading = isInfiniteLoading || isSearchLoading;
 
-  const showEmptyState = debouncedSearchTerm && (isSearchSuccess || isSearchError) && (!pokemons || pokemons.length === 0);
+  const showEmptyState =
+    debouncedSearchTerm &&
+    (isSearchSuccess || isSearchError) &&
+    (!pokemons || pokemons.length === 0);
 
   if (isLoading && !pokemons) return <Spinner />;
   if (isInfiniteError) return <div>Error al cargar los Pokémon.</div>;
@@ -88,10 +106,12 @@ const PokemonSelector = ({ onSelect, selectedPokemons, searchTerm, setSearchTerm
         type="text"
         placeholder="Buscar Pokémon..."
         value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
+        onChange={e => setSearchTerm(e.target.value)}
       />
       <PokemonGrid ref={gridRef}>
-        {pokemons && pokemons.length > 0 && pokemons.map(pokemon => (
+        {pokemons &&
+          pokemons.length > 0 &&
+          pokemons.map(pokemon => (
             <PokemonCard
               key={pokemon.id}
               pokemon={pokemon}
@@ -100,9 +120,16 @@ const PokemonSelector = ({ onSelect, selectedPokemons, searchTerm, setSearchTerm
               isTeamFull={selectedPokemons.length >= 6}
             />
           ))}
-        {showEmptyState && <EmptyState message={`No se encontraron Pokémon para "${debouncedSearchTerm}"`} />}
-        {hasNextPage && !debouncedSearchTerm && !isLoading &&(
-          <div ref={observerRef} style={{ height: '1px', gridColumn: '1 / -1' }} />
+        {showEmptyState && (
+          <EmptyState
+            message={`No se encontraron Pokémon para "${debouncedSearchTerm}"`}
+          />
+        )}
+        {hasNextPage && !debouncedSearchTerm && !isLoading && (
+          <div
+            ref={observerRef}
+            style={{ height: '1px', gridColumn: '1 / -1' }}
+          />
         )}
       </PokemonGrid>
       {isFetchingNextPage && <Spinner />}

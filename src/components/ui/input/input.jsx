@@ -1,8 +1,7 @@
-import React from 'react';
 import SearchIcon from '../icons/search-icon';
 import { IconWrapper, InputWrapper, StyledInput } from './input.styled';
 
-const Input = (props) => {
+const Input = props => {
   return (
     <InputWrapper>
       <IconWrapper>

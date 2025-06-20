@@ -5,7 +5,7 @@ const size = {
   tablet: '768px',
   laptop: '1024px',
   laptopL: '1440px',
-  desktop: '2560px'
+  desktop: '2560px',
 };
 
 export const device = {
@@ -16,7 +16,7 @@ export const device = {
   laptop: `(max-width: ${size.laptop})`,
   laptopL: `(max-width: ${size.laptopL})`,
   desktop: `(max-width: ${size.desktop})`,
-  desktopL: `(max-width: ${size.desktop})`
+  desktopL: `(max-width: ${size.desktop})`,
 };
 
 export const lightTheme = {
@@ -32,18 +32,20 @@ export const lightTheme = {
     s: '4px',
     m: '8px',
     l: '12px',
-    xl: '20px'
+    xl: '20px',
   },
   shadows: {
     small: '0 2px 4px rgba(0,0,0,0.1)',
     medium: '0 4px 8px rgba(0,0,0,0.15)',
-    large: '0 8px 16px rgba(0,0,0,0.2)'
+    large: '0 8px 16px rgba(0,0,0,0.2)',
   },
   colors: {
     background: '#F7FAF9',
     text: '#363537',
     border: '#DDDDDD',
-    surface: '#FFFFFF'
+    surface: '#FFFFFF',
+    textPrimary: '#363537',
+    textSecondary: '#6c757d',
   },
   buttons: {
     primary: {
@@ -87,18 +89,20 @@ export const darkTheme = {
     s: '4px',
     m: '8px',
     l: '12px',
-    xl: '20px'
+    xl: '20px',
   },
   shadows: {
     small: '0 2px 4px rgba(0,0,0,0.25)',
     medium: '0 4px 8px rgba(0,0,0,0.3)',
-    large: '0 8px 16px rgba(0,0,0,0.35)'
+    large: '0 8px 16px rgba(0,0,0,0.35)',
   },
   colors: {
     background: '#121212',
     text: '#FAFAFA',
     border: '#444444',
-    surface: '#1E1E1E'
+    surface: '#1E1E1E',
+    textPrimary: '#FAFAFA',
+    textSecondary: '#adb5bd',
   },
   buttons: {
     primary: {

@@ -1,6 +1,4 @@
-import React from 'react';
-
-export const SunIcon = (props) => (
+export const SunIcon = props => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="24"

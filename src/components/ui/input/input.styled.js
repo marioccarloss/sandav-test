@@ -12,7 +12,7 @@ export const StyledInput = styled.input`
   border: none;
   background-color: ${({ theme }) => theme.cardBg};
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-  font-size: 1rem;
+  font-size: 16px;
   color: ${({ theme }) => theme.text};
 
   &:focus {

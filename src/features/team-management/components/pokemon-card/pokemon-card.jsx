@@ -1,14 +1,14 @@
 import { typeColors } from '@/theme/type-colors';
-import React from 'react';
+
 import {
-    CardContent,
-    CardWrapper,
-    Checkmark,
-    PokemonImage,
-    PokemonName,
-    PokemonNumber,
-    TypePill,
-    TypesContainer,
+  CardContent,
+  CardWrapper,
+  Checkmark,
+  PokemonImage,
+  PokemonName,
+  PokemonNumber,
+  TypePill,
+  TypesContainer,
 } from './pokemon-card.styled';
 
 const PokemonCard = ({ pokemon, onSelect, isSelected, isTeamFull }) => {
@@ -18,9 +18,10 @@ const PokemonCard = ({ pokemon, onSelect, isSelected, isTeamFull }) => {
   const cardColor = typeColors[primaryType] || '#A8A77A';
   const isEffectivelyDisabled = isSelected || (!isSelected && isTeamFull);
 
-  const formatPokemonId = (id) => `#${String(id).padStart(3, '0')}`;
+  const formatPokemonId = id => `#${String(id).padStart(3, '0')}`;
 
-  const officialArtwork = sprites.other?.['official-artwork']?.front_default || sprites.front_default;
+  const officialArtwork =
+    sprites.other?.['official-artwork']?.front_default || sprites.front_default;
 
   return (
     <CardWrapper

@@ -1,6 +1,6 @@
 import { editTeamRoute } from '@/app/router';
 import { useParams } from '@tanstack/react-router';
-import React from 'react';
+
 import TeamBuilder from '../components/team-builder/team-builder';
 
 const EditTeamPage = () => {
